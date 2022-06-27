@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.PA" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:navigationBarColor">@color/blue</item>
+
 
     </style>
 </resources>

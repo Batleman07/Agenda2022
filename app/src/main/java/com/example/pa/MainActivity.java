@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
@@ -22,12 +24,13 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initWidgets();
-        selectedDate= LocalDate.now();
+        selectedDate= LocalDate.now();//LocalDate.now();
         setMonthView();
 
     }
@@ -73,8 +76,9 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private String monthYearFromDate(LocalDate date)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter) ;
+        Locale LptBr= new Locale("pt","BR");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yyyy",LptBr);
+        return date.format(formatter).toUpperCase(Locale.ROOT) ;
     }
 
     public void previousMonthAction(View view)
